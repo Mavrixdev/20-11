@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff5f9 0%, #ffe6f0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Background Trái Tim Bay ===== */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 30px;
+    animation: heartRise 6s ease-in infinite;
+    opacity: 0.7;
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(20px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== Login Screen ===== */
+.login-screen {
+    width: 100%;
+    max-width: 450px;
+    position: absolute;
+    transition: all 0.6s ease;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 114, 180, 0.2);
+    text-align: center;
+    border: 3px solid #ff72b4;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Avatar Section */
+.avatar-section {
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff72b4;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(255, 114, 180, 0.3);
+}
+
+.login-title {
+    color: #ff72b4;
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#titleImage {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Display mật khẩu */
+.password-display {
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.display-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    letter-spacing: 6px;
+    border: 2px solid #ff72b4;
+    border-radius: 8px;
+    text-align: center;
+    background: #fff5f9;
+    color: #ff72b4;
+    font-weight: bold;
+    cursor: default;
+}
+
+.display-input::placeholder {
+    color: #ffb3d9;
+    letter-spacing: 2px;
+}
+
+/* Bàn phím số */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.key {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ff72b4;
+    background: linear-gradient(135deg, #ff72b4 0%, #ff99cc 100%);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 8px rgba(255, 114, 180, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.key:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 114, 180, 0.3);
+    background: linear-gradient(135deg, #ff99cc 0%, #ffb3d9 100%);
+}
+
+.key:active {
+    transform: translateY(-1px);
+}
+
+.delete-key {
+    background: linear-gradient(135deg, #ff0077 0%, #b3095e 100%);
+    border-color: #ff72b4;
+}
+
+.enter-key {
+    background: linear-gradient(135deg, #99ffc0 0%, #00ff40 100%);
+    border-color: #05752b;
+}
+
+.error-message {
+    min-height: 20px;
+    color: #ff72b4;
+    font-size: 13px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* ===== Gift Box Animation ===== */
+.gift-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gift-box-content {
+    perspective: 1000px;
+    width: 200px;
+    height: 150px;
+    position: relative;
+}
+
+.gift-lid {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(135deg, #ff72b4 0%, #ff99cc 100%);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 5px 15px rgba(255, 114, 180, 0.3);
+    animation: lidOpen 1.5s ease-in-out 0.5s forwards;
+    transform-origin: bottom;
+}
+
+@keyframes lidOpen {
+    0% { transform: rotateX(0deg); opacity: 1; }
+    100% { transform: rotateX(-90deg) translateY(-30px); opacity: 0; }
+}
+
+.gift-lid-left, .gift-lid-right {
+    flex: 1;
+    text-align: center;
+}
+
+.gift-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffb3d9 0%, #ffc9e3 100%);
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== Gift Screen ===== */
+.gift-screen {
+    position: absolute;
+    width: 100%;
+    max-width: 450px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.gift-result-box {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    border: 3px solid #ff72b4;
+    box-shadow: 0 20px 60px rgba(255, 114, 180, 0.2);
+}
+
+.gift-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #ff72b4;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(255, 114, 180, 0.2);
+}
+
+.gift-message {
+    color: #ff72b4;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.gift-thanks {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.open-gift-btn {
+    background: linear-gradient(135deg, #ff72b4 0%, #ff99cc 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(255, 114, 180, 0.3);
+}
+
+.open-gift-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 114, 180, 0.4);
+}
+
+/* Canvas */
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes imageFall {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(250vh) scale(1.25);
+        opacity: 0;
+    }
+}
+
+.falling-image {
+    animation-fill-mode: forwards;
+}
