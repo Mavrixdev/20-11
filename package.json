@@ -1,5 +1,5 @@
 {
-  "name": "my-first-website",
+  "name": "mavrixdev",
   "version": "1.0.0",
   "description": "A simple website project.",
   "main": "src/index.html",
@@ -7,7 +7,7 @@
     "start": "live-server src",
     "build": "echo 'Build step not defined'"
   },
-  "author": "Your Name",
+  "author": "Nguyen Thac Mau",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
